@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Cvid Stat Gouv.fr 2020-07</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/sites/default/files/580b57fbd9996e24bc43bb8b.png" type="image/png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../../themes/ornote/front/js/lib/gspa/jquery.gsap.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap">
+  <link rel="prefetch stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+  <link rel="stylesheet" href="style/cvid.css">
+  <script src="script/ng-cvid.js"></script>
+  <script src="script/jq-cvid.js"></script>
+</head>
+<body ng-controller="CvidController">
+<header class="fork">
+  <a href="#" target="_blank">
+    <span class="fork-text">Fork me !</span><i class="fab fa-github-alt"></i>
+  </a>
+</header>
+<main class="warpper">
+  <div class="search input-prepend" ng-class="{'input-append':search}">
+    <form class="search-form">
+      <input type="text" class="map-search-field" placeholder="Rechercher un pays" ng-model="search">
+      <span class="btn btn-search" ng-click="search=''" ng-show="search" value="+ add"></span>
+    </form>
+    <div class="ng-result">
+      <ul class="my-map-search">
+        <li class="search--pays" ng-repeat="row in rows | filter : search | limitTo: 5"
+            ng-class="{ active: isSet($index + 1) }">
+          <a href ng-click="setTab($index + 1)">{{row.Pays}} le {{row.Date}}</a>
+          <ul class="result-global">
+            <li class="result-detail" ng-show="isSet($index + 1)">
+              <span>Taux de deces: {{row.TauxDeces}}%</span>
+              <div class="sb-skeleton">
+                <div class="skillbar" style="--pgbar-length: {{row.TauxDeces}}%"></div>
+              </div>
+              <span class="result-detail--num" ng-show="isSet($index + 1)">Deces: {{row.Deces}}</span>
+            </li>
+            <li class="result-detail" ng-show="isSet($index + 1)">
+              <span>Taux de guerison: {{row.TauxGuerison}}%</span>
+              <div class="sb-skeleton">
+                <div class="skillbar" style="--pgbar-length: {{row.TauxGuerison}}%"></div>
+              </div>
+              <span class="result-detail--num" ng-show="isSet($index + 1)">Guerisons: {{row.Guerisons}}</span>
+            </li>
+            <li class="result-detail" ng-show="isSet($index + 1)">
+              <span>Taux d'infection: {{row.TauxInfection}}%</span>
+              <div class="sb-skeleton">
+                <div class="skillbar" style="--pgbar-length: {{row.TauxInfection}}%"></div>
+              </div>
+              <span class="result-detail--num" ng-show="isSet($index + 1)">Infection: {{row.Infection}}</span>
+            </li>
+          </ul>
+        </li>
+        <li class="no-result" ng-show="(rows | filter:search).length == 0">Pas en base !</li>
+      </ul>
+    </div>
+  </div>
+</main>
+<footer>
+  <ul>
+    <li><i class="fab fa-html5"></i></li>
+    <li><i class="fab fa-sass"></i></li>
+    <li><i class="fab fa-angular"></i></li>
+    <li><i class="fab fa-js"></i></li>
+    <li><i class="fab fa-drupal"></i></li>
+  </ul>
+</footer>
+</body>
+</html>

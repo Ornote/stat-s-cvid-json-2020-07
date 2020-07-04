@@ -1,0 +1,149 @@
+.input-prepend {
+
+  .search--pays {
+    display: none;
+  }
+}
+
+.input-append {
+
+  .search--pays {
+    display: block;
+    text-transform: capitalize;
+  }
+}
+
+.search--pays {
+  transition: .05s;
+
+  &.is-active {
+    display: none;
+  }
+
+  &.is-active.active {
+    display: block;
+  }
+
+  &.active a {
+    letter-spacing: .15rem;
+    font-weight: 800;
+    transition: .05s;
+    pointer-events: none;
+    text-align: center;
+
+    &:before {
+      content: "";
+      background-image: url("../style/asset/arrow.svg");
+      background-repeat: no-repeat;
+      width: 18px;
+      height: 12px;
+      display: inline-block;
+      position: relative;
+      top: .1rem;
+      right: .2rem;
+    }
+  }
+
+  &:after {
+    content:"";
+    background: $primary;
+    height: .1rem;
+    width: 80%;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+  }
+
+  &:last-child:after {
+    content: "";
+    height: 0;
+  }
+}
+
+.ng-result {
+  display: flex;
+  justify-content: center;
+  @include z-index(99);
+
+  a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: .4s;
+
+    &:first-child {
+      padding-top: 1rem;
+    }
+
+    &:hover {
+      opacity: .5;
+      transition: .4s;
+    }
+
+  }
+}
+
+.my-map-search {
+  width: 80%;
+  background: rgba(0, 0, 0, .2);
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  padding: 0 1rem;
+}
+
+.no-result {
+  color: white;
+  padding: 1rem;
+  list-style: none;
+}
+
+.result-detail {
+  color: white;
+  list-style: none;
+
+  span {
+    padding: 1rem 0 .5rem 0;
+    display: block;
+  }
+
+  &--num {
+    padding-top: .5rem !important;
+    font-style: italic;
+  }
+}
+
+/* skilbar */
+.sb-skeleton  {
+  position: relative;
+  flex: 1 0 auto;
+  height: 2px;
+  background-color: $secondary;
+
+  > .skillbar {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 5px;
+    background-color: $red;
+  }
+}
+
+.is-active {
+
+  .sb-skeleton  {
+
+    > .skillbar {
+      width: var(--pgbar-length);
+      animation: pgbar-length 4s ease-in-out;
+    }
+  }
+}
+
+@keyframes pgbar-length {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--pgbar-length);
+  }
+}

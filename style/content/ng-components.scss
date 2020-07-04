@@ -1,0 +1,31 @@
+.search-form {
+  @include z-index(99);
+  margin: 0 auto;
+  width: 80%;
+}
+
+.map-search-field {
+  width: 100%;
+  background: rgba(255, 255, 255, .1);
+  padding: 1.2rem;
+  border: none;
+  border-bottom: 1px solid $primary;
+  color: white;
+  font-size: 1.2rem;
+  outline: none;
+
+  &::placeholder {
+    font-style: italic;
+  }
+}
+
+.btn-search {
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: .63rem;
+  background-image: url('../style/asset/close.svg');
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+}
