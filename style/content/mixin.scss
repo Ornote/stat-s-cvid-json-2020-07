@@ -11,37 +11,6 @@
   }
 }
 
-/* tab setting */
-$tab-count: 4;
-$indicator-width: 50px;
-$indicator-height: 4px;
-
-$label-selector: "~ ul > li";
-$slider-selector: "~ .slider";
-$content-selector: "~ .content > section";
-
-@mixin tabs(
-  $label-selector: $label-selector,
-  $slider-selector: $slider-selector,
-  $content-selector: $content-selector) {
-
-  @for $i from 1 through $tab-count {
-    &:nth-of-type(#{$i}):checked {
-      #{$label-selector}:nth-child(#{$i}) {
-        @content;
-      }
-
-      #{$slider-selector} {
-        transform: translateX(#{100% * ($i - 1)});
-      }
-
-      #{$content-selector}:nth-child(#{$i}) {
-        display: block;
-      }
-    }
-  }
-}
-
 // Page width
 @mixin page-width($page-width) {
   width: $page-width;
@@ -49,7 +18,7 @@ $content-selector: "~ .content > section";
 }
 
 /* Index */
-@mixin z-index($z-value) {
-  position: relative;
+@mixin z-index($p-value, $z-value) {
+  position: $p-value;
   z-index: $z-value;
 }

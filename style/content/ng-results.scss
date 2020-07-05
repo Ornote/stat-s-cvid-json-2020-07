@@ -18,10 +18,12 @@
 
   &.is-active {
     display: none;
+    animation: result 1s ease-in-out;
   }
 
   &.is-active.active {
     display: block;
+    animation: result 1s ease-in-out;
   }
 
   &.active a {
@@ -59,10 +61,18 @@
   }
 }
 
+@keyframes result {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .ng-result {
   display: flex;
   justify-content: center;
-  @include z-index(99);
+  @include z-index(relative, 99);
 
   a {
     cursor: pointer;
@@ -128,7 +138,7 @@
   }
 }
 
-.is-active {
+.active {
 
   .sb-skeleton  {
 

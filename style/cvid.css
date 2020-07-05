@@ -1,5 +1,4 @@
 /*import files*/
-/* tab setting */
 /* Index */
 :root {
   --pgbar-length: 100%; }
@@ -25,7 +24,8 @@ body {
   font-size: 14px;
   font-family: Raleway;
   transition: .2s;
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
 .center-element {
   position: absolute;
@@ -52,8 +52,8 @@ body {
     color: white;
     left: -5.4rem;
     position: absolute;
-    top: 0;
     z-index: 100;
+    top: 0;
     transition: .3s; }
     @media only screen and (max-width: 800px) {
       .fork a {
@@ -81,7 +81,7 @@ body {
 footer {
   bottom: 0;
   position: absolute;
-  z-index: 99;
+  z-index: 100;
   display: flex;
   justify-content: center;
   width: 100%; }
@@ -104,20 +104,51 @@ footer {
   position: relative;
   z-index: 99;
   margin: 0 auto;
-  width: 80%; }
+  display: none; }
 
+.show-form {
+  display: block;
+  width: 80%;
+  animation: size-form 3s ease-in-out; }
+
+@keyframes size-form {
+  0% {
+    width: 0;
+    opacity: 0; }
+  100% {
+    width: 80%;
+    opacity: 1; } }
 .map-search-field {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
   padding: 1.2rem;
   border: none;
   border-bottom: 1px solid #11998e;
+  border-left: 1px solid #11998e;
+  border-right: 1px solid #11998e;
+  border-radius: .3rem;
   color: white;
   font-size: 1.2rem;
-  outline: none; }
-  .map-search-field::placeholder {
-    font-style: italic; }
+  outline: none;
+  position: relative; }
 
+.PlaceHolder {
+  color: white;
+  font-style: italic;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  display: none; }
+  .PlaceHolder-form {
+    display: block;
+    animation: PlaceHolder 3s ease-in-out; }
+
+@keyframes PlaceHolder {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .btn-search {
   cursor: pointer;
   position: absolute;
@@ -126,7 +157,16 @@ footer {
   background-image: url("../style/asset/close.svg");
   background-repeat: no-repeat;
   height: 40px;
-  width: 40px; }
+  width: 40px;
+  transition: .3s; }
+  .btn-search:hover {
+    opacity: .8;
+    transition: .3s; }
+
+.split {
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: .1rem; }
 
 .input-prepend .search--pays {
   display: none; }
@@ -138,9 +178,11 @@ footer {
 .search--pays {
   transition: .05s; }
   .search--pays.is-active {
-    display: none; }
+    display: none;
+    animation: result 1s ease-in-out; }
   .search--pays.is-active.active {
-    display: block; }
+    display: block;
+    animation: result 1s ease-in-out; }
   .search--pays.active a {
     letter-spacing: .15rem;
     font-weight: 800;
@@ -168,6 +210,11 @@ footer {
     content: "";
     height: 0; }
 
+@keyframes result {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .ng-result {
   display: flex;
   justify-content: center;
@@ -220,7 +267,7 @@ footer {
     height: 5px;
     background-color: #DC143C; }
 
-.is-active .sb-skeleton > .skillbar {
+.active .sb-skeleton > .skillbar {
   width: var(--pgbar-length);
   animation: pgbar-length 4s ease-in-out; }
 
